@@ -47,7 +47,7 @@
         android:layout_marginTop="20dp"
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
-        app:cardBackgroundColor="#674FA4"
+        app:cardBackgroundColor="@color/primary_color"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp">
 
@@ -72,7 +72,7 @@
         android:layout_marginTop="20dp"
         android:foreground="?attr/selectableItemBackground"
         android:clickable="true"
-        app:cardBackgroundColor="#674FA4"
+        app:cardBackgroundColor="@color/primary_color"
         app:cardCornerRadius="20dp"
         app:cardElevation="0dp">
 
