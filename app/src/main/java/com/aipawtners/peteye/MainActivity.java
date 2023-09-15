@@ -2,6 +2,7 @@ package com.aipawtners.peteye;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.cardview.widget.CardView;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -21,6 +22,8 @@ public class MainActivity extends AppCompatActivity {
 
         main_fragment=new MainFragment();
         info_fragment=new InfoFragment();
+
+
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,main_fragment).commit();
 
