@@ -31,12 +31,10 @@ public class MainActivity extends AppCompatActivity {
                     public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                         if(item.getItemId()==R.id.tab_main){
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, main_fragment).commit();
-                            return true;
                         }else if(item.getItemId()==R.id.tab_information){
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, info_fragment).commit();
-                            return true;
                         }
-                        return false;
+                        return true;
             }
         }
         );
