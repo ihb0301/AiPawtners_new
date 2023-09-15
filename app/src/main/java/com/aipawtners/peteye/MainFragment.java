@@ -8,9 +8,12 @@ import android.net.Uri;
 import android.os.Build;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.cardview.widget.CardView;
+import androidx.core.content.FileProvider;
 import androidx.fragment.app.Fragment;
 
+import android.os.Environment;
 import android.provider.MediaStore;
 import android.util.Log;
 import android.util.Pair;
@@ -19,6 +22,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.Locale;
 
@@ -31,7 +35,10 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
     private ClassifierWithSupport cls;
     public static final int GALLERY_IMAGE_REQUEST_CODE=1;
+    public static final int CAMERA_IMAGE_REQUEST_CODE=2;
+    private static final String KEY_SELECTED_URI = "KEY_SELECTED_URI";
     TextView textview;
+    Uri selectedImageUri;
 
     // TODO: Rename parameter arguments, choose names that match
     // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
@@ -85,8 +92,16 @@ public class MainFragment extends Fragment implements View.OnClickListener{
             io.printStackTrace();
         }
 
+        if(savedInstanceState!=null){
+            Uri uri=savedInstanceState.getParcelable(KEY_SELECTED_URI);
+            if(uri!=null)
+                selectedImageUri=uri;
+        }
+
         CardView cardview1=root.findViewById(R.id.main_imageload);
+        CardView cardview2=root.findViewById(R.id.main_camera);
         cardview1.setOnClickListener(this);
+        cardview2.setOnClickListener(this);
         textview=root.findViewById(R.id.textview_main);
         // Inflate the layout for this fragment
         return root;
@@ -98,6 +113,8 @@ public class MainFragment extends Fragment implements View.OnClickListener{
         if(v.getId()==R.id.main_imageload){
             Intent intent=new Intent(Intent.ACTION_GET_CONTENT).setType("image/*");
             startActivityForResult(intent,GALLERY_IMAGE_REQUEST_CODE);
+        }else if(v.getId()==R.id.main_camera){
+            getImageFromCamera();
         }
     }
 
@@ -134,6 +151,47 @@ public class MainFragment extends Fragment implements View.OnClickListener{
 
                 textview.setText(resultStr);
             }
+        }else if(resultCode== Activity.RESULT_OK && requestCode==CAMERA_IMAGE_REQUEST_CODE){
+            Bitmap bitmap=null;
+
+            try{
+                if(Build.VERSION.SDK_INT>=29){
+                    ImageDecoder.Source src=ImageDecoder.createSource(getActivity().getContentResolver(),selectedImageUri);
+                    bitmap=ImageDecoder.decodeBitmap(src);
+                }else{
+                    bitmap= MediaStore.Images.Media.getBitmap(getActivity().getContentResolver(),selectedImageUri);
+                }
+            }catch(IOException io){
+                io.printStackTrace();
+            }
+
+            if(bitmap!=null){
+                Pair<String,Float> output=cls.classify(bitmap);
+                String result= output.first;
+                if ((result.equals("결막염")||result.equals("백내장")) && output.second*100<=99){
+                    //result="증상 없음";
+                }
+                String resultStr=String.format("%.2f%%의 확률로 %s으로 판단됩니다",output.second*100,result);
+
+                textview.setText(resultStr);
+            }
         }
+    }
+
+    @Override
+    public void onSaveInstanceState(@NonNull Bundle outState){
+        super.onSaveInstanceState(outState);
+
+        outState.putParcelable(KEY_SELECTED_URI,selectedImageUri);
+    }
+
+    private void getImageFromCamera(){
+        File file=new File(getActivity().getExternalFilesDir(Environment.DIRECTORY_PICTURES),"pitute.jpg");
+        if(file.exists()) file.delete();
+        selectedImageUri= FileProvider.getUriForFile(getActivity(),getActivity().getPackageName(),file);
+
+        Intent intent=new Intent(MediaStore.ACTION_IMAGE_CAPTURE);
+        intent.putExtra(MediaStore.EXTRA_OUTPUT,selectedImageUri);
+        startActivityForResult(intent,CAMERA_IMAGE_REQUEST_CODE);
     }
 }
