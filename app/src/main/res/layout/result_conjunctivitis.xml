@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="원인"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="1) 물리 · 화학적 자극"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="눈을 세게 문지르거나, 눈에 털이 들어가는 등의 물리적인 자극이 결막염을 부르기도 한다. 또한 샴푸나 약품 등에 의한 화학적인 자극 역시 결막염이 원인이 될 수 있다. 물리 · 화학적으로 발병하는 경우 대개 한쪽 눈에만 결막염 증상이 나타나기도 한다."
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="2) 세균 또는 바이러스 감염"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="세균이나 바이러스에 감염될 경우 증상이 결막염으로 나타날 수 있다. 결막염을 일으키는 바이러스의 대표적인 것은 '개홍역 바이러스'가 있다. 클라미디아와 같은 세균에 의해서도 결막염이 나타나기도 한다."
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="3) 알레르기 반응"
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:textStyle="bold"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="알레르겐(알레르기 원인 물질)이 눈에 직접 닿았거나, 코로 흡입, 입으로 섭취했을 경우 나타나기도 한다. 아토피 등 알레르기성 피부염이 눈에 영향을 줄 수도 있다."
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="0dp"
+                android:layout_marginBottom="0dp"
+                android:layout_marginStart="20dp"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="치료"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                android:layout_marginTop="20dp"
+                android:layout_marginBottom="10dp"
+                android:layout_marginStart="20dp"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="물리 및 화학적 원인이라면 근본치료가 아닌 그 증상에만 대응해 치료(대증치료)가 가능하다. 대증치료는 안약을 주입하거나 안연고를 발라 염증 억제를 하도록 한다. 또 눈썹 등의 털이 눈을 찌르고 있다면 해당 털을 제거해줘 다시는 같은 염증이 반복되지 않도록 조치한다.
+
+알레르기성 결막염의 경우 이 같은 대증치료에 더해 알레르겐을 찾아 제거하도록 한다. 특히 알레르기성 결막염은 지속적으로 관리해야 한다. 정기적으로 병원치료를 받되, 병원에 갈 수 없는 상황이라면 임시방편으로 냉찜질을 해 가려움을 완화시킨다.
+
+감염성 결막염의 경우, 세균이나 바이러스가 눈에만 감염됐는지, 다른 부위에도 감염됐는지 확인한 뒤, 개홍역 등 원인이 되는 감염병을 치료해주도록 한다."
+                android:textColor="@color/black"
+                android:textSize="15sp"
+                android:layout_marginTop="10dp"
+                android:layout_marginBottom="100dp"
+                android:layout_marginStart="20dp"/>
+        </LinearLayout>
+    </ScrollView>
+
+
+</LinearLayout>

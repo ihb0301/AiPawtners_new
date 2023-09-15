@@ -149,6 +149,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                 }
                 String resultStr=String.format("%.2f%%의 확률로 %s으로 판단됩니다",output.second*100,result);
 
+                ResultFragment.result=output.first;
                 textview.setText(resultStr);
             }
         }else if(resultCode== Activity.RESULT_OK && requestCode==CAMERA_IMAGE_REQUEST_CODE){
@@ -173,6 +174,7 @@ public class MainFragment extends Fragment implements View.OnClickListener{
                 }
                 String resultStr=String.format("%.2f%%의 확률로 %s으로 판단됩니다",output.second*100,result);
 
+                ResultFragment.result=output.first;
                 textview.setText(resultStr);
             }
         }

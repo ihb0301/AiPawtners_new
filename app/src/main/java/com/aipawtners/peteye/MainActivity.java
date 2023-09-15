@@ -14,6 +14,7 @@ public class MainActivity extends AppCompatActivity {
 
     MainFragment main_fragment;
     InfoFragment info_fragment;
+    ResultFragment result_fragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,7 +23,7 @@ public class MainActivity extends AppCompatActivity {
 
         main_fragment=new MainFragment();
         info_fragment=new InfoFragment();
-
+        result_fragment=new ResultFragment();
 
 
         getSupportFragmentManager().beginTransaction().replace(R.id.container,main_fragment).commit();
@@ -36,6 +37,8 @@ public class MainActivity extends AppCompatActivity {
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, main_fragment).commit();
                         }else if(item.getItemId()==R.id.tab_information){
                             getSupportFragmentManager().beginTransaction().replace(R.id.container, info_fragment).commit();
+                        }else if(item.getItemId()==R.id.tab_result){
+                            getSupportFragmentManager().beginTransaction().replace(R.id.container, result_fragment).commit();
                         }
                         return true;
             }
